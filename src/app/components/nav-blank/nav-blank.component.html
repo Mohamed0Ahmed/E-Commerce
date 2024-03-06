@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/"
+      ><img src="./assets/images/freshcart-logo.svg" alt=""
+    /></a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+        <li class="nav-item font-sm">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/home"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item font-sm">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/cart"
+            >cart</a
+          >
+        </li>
+        <li class="nav-item font-sm">
+          <a
+            class="nav-link"
+            routerLinkActive="active-link"
+            routerLink="/wishlist"
+            >wish list</a
+          >
+        </li>
+        <li class="nav-item font-sm">
+          <a
+            class="nav-link"
+            routerLinkActive="active-link"
+            routerLink="/product"
+            >product</a
+          >
+        </li>
+        <li class="nav-item font-sm">
+          <a
+            class="nav-link"
+            routerLinkActive="active-link"
+            routerLink="/category"
+            >category</a
+          >
+        </li>
+        <li class="nav-item font-sm">
+          <a
+            class="nav-link"
+            routerLinkActive="active-link"
+            routerLink="/brands"
+            >brands</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0 align-items-center">
+        <li class="position-relative px-4">
+          <i
+            class="fa-solid fa-heart fa-xl"
+            routerLink="/wishlist"
+            style="color: #d60707"
+          ></i>
+          <span class="badge bg-main"> {{ wishlistNum }} </span>
+        </li>
+        <li class="px-4 position-relative">
+          <i
+            class="fa-solid fa-cart-shopping fa-xl"
+            style="color: #7c7e83"
+            routerLink="/cart"
+          ></i>
+          <span class="badge bg-main"> {{ navCartNum }} </span>
+        </li>
+        <li class="nav-item font-sm" role="button">
+          <span (click)="logoutUser()">Log out</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

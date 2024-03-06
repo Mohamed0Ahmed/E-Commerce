@@ -1,0 +1,74 @@
+<section class="w-75 mx-auto my-5 py-5">
+  <div class="bg-main-light p-5 rounded-4">
+    <div class="d-flex justify-content-between">
+      <div>
+        <h2 class="fw-bold py-3">Cart Shop</h2>
+        <h2 class="fw-bold" *ngIf="numberOfItems === 0">Your cart is empty</h2>
+      </div>
+      <div *ngIf="numberOfItems != 0">
+        <button class="btn btn-primary fw-bold" [routerLink]="['/checkout',cartDetails._id]">Check Out</button>
+      </div>
+    </div>
+    <div *ngIf="numberOfItems != 0">
+      <div class="d-flex justify-content-between">
+        <p class="fw-bold py-3">
+          Total price :
+          <span class="text-main">
+            {{ cartDetails.totalCartPrice | currency : " EGP " }}
+          </span>
+        </p>
+        <p class="fw-bold">
+          Number Of Items :
+          <span class="text-main"> {{ numberOfItems }} </span>
+        </p>
+      </div>
+    </div>
+    <div
+      class="row py-3 border-bottom"
+      *ngFor="let item of cartDetails.products"
+    >
+      <div *ngIf="numberOfItems != 0" class="d-flex align-items-center">
+        <div class="col-md-2">
+          <img
+            [src]="item.product.imageCover"
+            [alt]="item.product.title"
+            class="w-100"
+          />
+        </div>
+        <div class="col-md-10 d-flex justify-content-between p-3">
+          <div>
+            <h4 class="fw-bold">{{ item.product.title }}</h4>
+            <h6 class="fw-bold">{{ item.price | currency : " EGP " }}</h6>
+            <button
+              class="text-danger btn"
+              (click)="removeCartItem(item.product._id)"
+            >
+              <i class="fa-solid fa-trash"></i> Remove
+            </button>
+          </div>
+          <div class="d-flex align-items-center">
+            <button
+              class="fw-bold btn border border-success"
+              (click)="updateCount(item.product._id, item.count + 1)"
+            >
+              +
+            </button>
+            <span class="px-4 h5 fw-bold"> {{ item.count }} </span>
+            <button
+              class="fw-bold btn border border-success"
+              (click)="updateCount(item.product._id, item.count - 1)"
+              [disabled]="item.count == 1"
+            >
+              -
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center py-2" *ngIf="numberOfItems != 0">
+      <button class="btn btn-outline-success fw-bold" (click)="clearCart()">
+        Clear Your Cart
+      </button>
+    </div>
+  </div>
+</section>

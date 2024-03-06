@@ -1,0 +1,12 @@
+.img {
+  object-fit: cover;
+  object-position: center;
+  height: 250px;
+  vertical-align: middle;
+  overflow: clip;
+}
+
+.form-control::placeholder{
+  font-weight: 800;
+  font-size: 14px;
+}

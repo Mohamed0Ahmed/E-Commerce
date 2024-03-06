@@ -1,0 +1,73 @@
+<section class="container pb-5">
+  <div class="row g-4">
+    <div class="d-flex justify-content-center py-3">
+      <input
+        type="search"
+        class="form-control w-75"
+        placeholder="Search....."
+        [(ngModel)]="serchTerm"
+      />
+    </div>
+    <div
+      class="col-md-3"
+      *ngFor="
+        let product of productData
+          | paginate
+            : {
+                id: 'foo',
+                itemsPerPage: pageSize,
+                currentPage: currentPage,
+                totalItems: total
+              }
+          | search : serchTerm
+      "
+    >
+      <div class="product p-4 h-100">
+        <div class="cursor-pointer" [routerLink]="['/details', product._id]">
+          <img [src]="product.imageCover" class="w-100" [alt]="product.title" />
+          <p class="h6 text-main">{{ product.category.name }}</p>
+          <h3 class="h5 fw-bold">
+            {{ product.title.split(" ").slice(0, 2).join(" ") }}
+          </h3>
+          <ul class="d-flex justify-content-between align-items-center p-0">
+            <li class="fw-bold">
+              {{ product.price }} <span class="fw-bold">EGP</span>
+            </li>
+            <li>
+              <span> <i class="fas fa-star rating-color px-1"></i></span>
+              {{ product.ratingsAverage }}
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn-main form-control" (click)="addCart(product._id)">
+            + Add
+          </button>
+          <i
+            class="fa-solid fa-heart fa-2x"
+            [style.color]="wishlistData.includes(product._id) ? 'red' : 'black'"
+            (click)="addOrRemove(product._id)"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-center mt-4">
+    <pagination-controls
+      id="foo"
+      (pageChange)="pageChanged($event)"
+      (pageBoundsCorrection)="pageChanged($event)"
+      [maxSize]="9"
+      [directionLinks]="true"
+      [autoHide]="true"
+      [responsive]="true"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page"
+    >
+    </pagination-controls>
+  </div>
+</section>
