@@ -27,7 +27,13 @@
           <button class="btn-main w-75" (click)="addCart(productDetails._id)">
             Add Product
           </button>
-          <i class="fa-solid fa-heart fa-2x" style="color: #000000"></i>
+          <i
+            class="fa-solid fa-heart fa-2x"
+            [style.color]="
+              wishlistData.includes(productDetails._id) ? 'red' : 'black'
+            "
+            (click)="addOrRemove(productDetails._id)"
+          ></i>
         </div>
       </div>
     </div>

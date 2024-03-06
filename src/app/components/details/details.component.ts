@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { product } from 'src/app/shared/interfaces/product';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { EcomdataService } from 'src/app/shared/services/ecomdata.service';
+import { WishlistService } from 'src/app/shared/services/wishlist.service';
 
 @Component({
   selector: 'app-details',
@@ -16,10 +17,12 @@ export class DetailsComponent implements OnInit {
     private _ActivatedRoute: ActivatedRoute,
     private _EcomdataService: EcomdataService,
     private _CartService: CartService,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    private _WishlistService: WishlistService
   ) {}
   //* ##### variables
   productDetails: product = {} as product;
+  wishlistData: string[] = [];
 
   //* details slider
   mainSlider: OwlOptions = {
@@ -64,5 +67,29 @@ export class DetailsComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  //* add to wish list
+  addOrRemove(id: string) {
+    if (this.wishlistData.includes(id)) {
+      this._WishlistService.removeWishlist(id).subscribe({
+        next: (response) => {
+          console.log(response);
+          this._toastr.success(response.message);
+          this._WishlistService.wishNumber.next(response.data.length);
+          this.wishlistData = response.data;
+        },
+      });
+      //*
+    } else {
+      this._WishlistService.addToWishlist(id).subscribe({
+        next: (response) => {
+          console.log(response);
+          this._toastr.success(response.message);
+          this._WishlistService.wishNumber.next(response.data.length);
+          this.wishlistData = response.data;
+        },
+      });
+    }
   }
 }
