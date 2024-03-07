@@ -1,0 +1,24 @@
+.img {
+  object-fit: cover;
+  object-position: center;
+  height: 250px;
+  vertical-align: middle;
+  overflow: clip;
+}
+.info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  top: 30%;
+  right: 0;
+  background-color: rgba(50, 50, 50, 0.2);
+  padding: 30px 10px;
+  border-radius: 5px;
+  transform: translatex(300%);
+  transition: 0.5s;
+}
+.product:hover .info {
+  transform: translatex(0%);
+}

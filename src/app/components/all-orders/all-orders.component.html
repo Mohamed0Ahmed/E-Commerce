@@ -1,6 +1,10 @@
 <section class="min-vh-100 bg-main-light">
   <div class="container p-5">
-    <div class="text-center fw-bold text-success h1">Your Payment Details</div>
+    <div>
+      <div class="text-center fw-bold text-success h1">
+        Your Payment Details
+      </div>
+    </div>
 
     <div class="row py-5 border-bottom" *ngFor="let order of userOrders">
       <div class="col-md-2" *ngFor="let item of order.cartItems">
@@ -27,6 +31,9 @@
         </h3>
         <h3 class="h6 fw-bold">
           City : <span> {{ order.shippingAddress.city }} </span>
+        </h3>
+        <h3 class="h6 fw-bold">
+          Details : <span> {{ order.shippingAddress.details }} </span>
         </h3>
         <h3 class="text-success fw-bold h6">Payment Done</h3>
       </div>

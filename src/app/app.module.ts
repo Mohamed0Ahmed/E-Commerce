@@ -30,6 +30,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { ForgetPassComponent } from './components/forget-pass/forget-pass.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MainSliderComponent } from './components/main-slider/main-slider.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CheckoutComponent,
     AllOrdersComponent,
     ForgetPassComponent,
+    MainSliderComponent,
   ],
   imports: [
     BrowserModule,

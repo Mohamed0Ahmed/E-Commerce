@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+<nav
+  class="navbar navbar-expand-md navbar-light fixed-top"
+  [ngClass]="{ 'bg-main-light': scrolled }"
+>
   <div class="container">
     <a class="navbar-brand" routerLink="/"
       ><img src="./assets/images/freshcart-logo.svg" alt=""
@@ -15,25 +18,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+      <ul class="navbar-nav mx-auto mt-2 mt-lg-0 text-center">
         <li class="nav-item font-sm">
           <a class="nav-link" routerLinkActive="active-link" routerLink="/home"
             >Home</a
           >
         </li>
-        <li class="nav-item font-sm">
-          <a class="nav-link" routerLinkActive="active-link" routerLink="/cart"
-            >cart</a
-          >
-        </li>
-        <li class="nav-item font-sm">
-          <a
-            class="nav-link"
-            routerLinkActive="active-link"
-            routerLink="/wishlist"
-            >wish list</a
-          >
-        </li>
+
         <li class="nav-item font-sm">
           <a
             class="nav-link"
@@ -56,6 +47,14 @@
             routerLinkActive="active-link"
             routerLink="/brands"
             >brands</a
+          >
+        </li>
+        <li class="nav-item font-sm">
+          <a
+            class="nav-link"
+            routerLinkActive="active-link"
+            routerLink="/allorders"
+            >All Orders</a
           >
         </li>
       </ul>

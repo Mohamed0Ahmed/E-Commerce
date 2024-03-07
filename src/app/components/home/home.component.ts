@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
-import { Categories } from 'src/app/shared/interfaces/categories';
 import { product } from 'src/app/shared/interfaces/product';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { EcomdataService } from 'src/app/shared/services/ecomdata.service';
@@ -22,67 +20,25 @@ export class HomeComponent implements OnInit {
 
   //* variables
   productData: product[] = [];
-  categoryData: Categories[] = [];
   serchTerm: string = '';
+  pageSize: number = 0; //* limit
+  currentPage: number = 1; //* current
+  total: number = 0;
   wishlistData: string[] = [];
 
-  //* ### category slider
-  catlisder: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    autoplay: true,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 6,
-      },
-    },
-    nav: true,
-  };
-  //* main slider
-  mainSlider: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    autoplay: true,
-    items: 1,
-    nav: true,
-  };
+ 
 
   //* ### get all products
   ngOnInit(): void {
-    this._EcomdataService.getAllProduct().subscribe({
+    this._EcomdataService.getAllProductss().subscribe({
       next: (response) => {
         this.productData = response.data;
-        console.log(this.productData);
+        console.log(response.metadata);
+        this.pageSize = response.metadata.limit;
+        this.currentPage = response.metadata.currentPage;
+        this.total = response.results;
       },
     });
-    //* ### get categories
-
-    this._EcomdataService.getcat().subscribe({
-      next: (response) => {
-        this.categoryData = response.data;
-        console.log(response);
-      },
-    });
-
     //* get wish list
     this._WishlistService.getWishlist().subscribe({
       next: (response) => {
@@ -92,6 +48,7 @@ export class HomeComponent implements OnInit {
         this.wishlistData = data;
       },
     });
+    
   }
 
   //* ### add to cart
@@ -108,7 +65,6 @@ export class HomeComponent implements OnInit {
       },
     });
   }
-
   //* add to wish list
   addOrRemove(id: string) {
     if (this.wishlistData.includes(id)) {
@@ -131,5 +87,18 @@ export class HomeComponent implements OnInit {
         },
       });
     }
+  }
+  //* ### pageChanged
+  pageChanged(event: any): void {
+    console.log(event);
+    this._EcomdataService.getAllProductss(event).subscribe({
+      next: (response) => {
+        this.productData = response.data;
+        console.log(response.metadata);
+        this.pageSize = response.metadata.limit;
+        this.currentPage = response.metadata.currentPage;
+        this.total = response.results;
+      },
+    });
   }
 }

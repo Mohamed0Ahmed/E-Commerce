@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
@@ -16,7 +16,7 @@ export class NavBlankComponent implements OnInit {
   ) {}
 
   //* variables
-
+  scrolled: boolean = false;
   navCartNum: number = 0;
   wishlistNum: number = 0;
 
@@ -45,8 +45,17 @@ export class NavBlankComponent implements OnInit {
     this._WishlistService.getWishlist().subscribe({
       next: (response) => {
         console.log(response);
-        this.wishlistNum = response.count
+        this.wishlistNum = response.count;
       },
     });
+  }
+  //* ### scrolled
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (window.scrollY > 10) {
+      this.scrolled = true;
+    } else {
+      this.scrolled = false;
+    }
   }
 }
