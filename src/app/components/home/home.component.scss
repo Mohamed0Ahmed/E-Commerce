@@ -58,3 +58,36 @@
   font-weight: 700;
   font-size: 30px;
 }
+.input::placeholder {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sale {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.no-sale {
+  transform: rotate(-45deg);
+}
+.number {
+  position: absolute;
+  top: -30px;
+  text-decoration: line-through;
+}
+.img2 {
+  position: absolute;
+  transform: translateX(-100%);
+  transition: 0.5s;
+  opacity: 0;
+}
+.img1 {
+  transition: 0.5s;
+}
+.product:hover .img2 {
+  opacity: 1;
+}
+.product:hover .img1 {
+  opacity: 0;
+}

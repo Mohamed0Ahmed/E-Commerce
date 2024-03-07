@@ -26,7 +26,9 @@ export class HomeComponent implements OnInit {
   total: number = 0;
   wishlistData: string[] = [];
 
- 
+  generateRatingArray(ratingAverage: number): any[] {
+    return Array.from({ length: ratingAverage }, (_, index) => index);
+  }
 
   //* ### get all products
   ngOnInit(): void {
@@ -48,7 +50,6 @@ export class HomeComponent implements OnInit {
         this.wishlistData = data;
       },
     });
-    
   }
 
   //* ### add to cart

@@ -26,6 +26,9 @@ export class ProductsComponent {
   categoryData: Categories[] = [];
   serchTerm: string = '';
   wishlistData: string[] = [];
+  generateRatingArray(ratingAverage: number): any[] {
+    return Array.from({ length: ratingAverage }, (_, index) => index);
+  }
 
   //* ### category slider
   catlisder: OwlOptions = {
