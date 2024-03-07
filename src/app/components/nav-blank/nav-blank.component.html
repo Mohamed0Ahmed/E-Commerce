@@ -2,7 +2,7 @@
   class="navbar navbar-expand-md navbar-light fixed-top"
   [ngClass]="{ 'bg-main-light': scrolled }"
 >
-  <div class="container">
+  <div class="container px-5">
     <a class="navbar-brand" routerLink="/"
       ><img src="./assets/images/freshcart-logo.svg" alt=""
     /></a>
@@ -17,15 +17,15 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <div class="collapse navbar-collapse" id="collapsibleNavId" #collapsibleNav>
       <ul class="navbar-nav mx-auto mt-2 mt-lg-0 text-center">
-        <li class="nav-item font-sm">
+        <li class="nav-item font-sm" (click)="closeToggler()">
           <a class="nav-link" routerLinkActive="active-link" routerLink="/home"
             >Home</a
           >
         </li>
 
-        <li class="nav-item font-sm">
+        <li class="nav-item font-sm" (click)="closeToggler()">
           <a
             class="nav-link"
             routerLinkActive="active-link"
@@ -33,7 +33,7 @@
             >product</a
           >
         </li>
-        <li class="nav-item font-sm">
+        <li class="nav-item font-sm" (click)="closeToggler()">
           <a
             class="nav-link"
             routerLinkActive="active-link"
@@ -41,7 +41,7 @@
             >category</a
           >
         </li>
-        <li class="nav-item font-sm">
+        <li class="nav-item font-sm" (click)="closeToggler()">
           <a
             class="nav-link"
             routerLinkActive="active-link"
@@ -49,7 +49,7 @@
             >brands</a
           >
         </li>
-        <li class="nav-item font-sm">
+        <li class="nav-item font-sm" (click)="closeToggler()">
           <a
             class="nav-link"
             routerLinkActive="active-link"
@@ -58,8 +58,8 @@
           >
         </li>
       </ul>
-      <ul class="navbar-nav ms-auto mt-2 mt-lg-0 align-items-center">
-        <li class="position-relative px-4">
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0 align-items-center iconsss">
+        <li class="position-relative px-4" (click)="closeToggler()">
           <i
             class="fa-solid fa-heart fa-xl"
             routerLink="/wishlist"
@@ -67,7 +67,7 @@
           ></i>
           <span class="badge bg-main"> {{ wishlistNum }} </span>
         </li>
-        <li class="px-4 position-relative">
+        <li class="px-4 position-relative" (click)="closeToggler()">
           <i
             class="fa-solid fa-cart-shopping fa-xl"
             style="color: #7c7e83"
@@ -75,7 +75,7 @@
           ></i>
           <span class="badge bg-main"> {{ navCartNum }} </span>
         </li>
-        <li class="nav-item font-sm" role="button">
+        <li class="nav-item font-sm" (click)="closeToggler()" role="button">
           <span (click)="logoutUser()">Log out</span>
         </li>
       </ul>

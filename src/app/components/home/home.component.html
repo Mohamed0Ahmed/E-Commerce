@@ -5,7 +5,7 @@
 
 <!-- * #### main slider -->
 
-<app-main-slider></app-main-slider>
+<app-main-slider class="sli"></app-main-slider>
 
 <!-- *#### -->
 
@@ -56,7 +56,7 @@
                 [alt]="product.title"
               />
               <img
-                [src]="product.images[2]"
+                [src]="product.images[2] || product.images[0]"
                 class="w-100 img2"
                 [alt]="product.title"
               />

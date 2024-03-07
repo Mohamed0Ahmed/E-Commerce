@@ -25,9 +25,9 @@ export class HomeComponent implements OnInit {
   currentPage: number = 1; //* current
   total: number = 0;
   wishlistData: string[] = [];
-
+  //* show Stars
   generateRatingArray(ratingAverage: number): any[] {
-    return Array.from({ length: ratingAverage }, (_, index) => index);
+    return Array.from({ length: ratingAverage }, (star, index) => index);
   }
 
   //* ### get all products
@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
       this._WishlistService.removeWishlist(id).subscribe({
         next: (response) => {
           console.log(response);
-          this._toastr.success(response.message);
+          this._toastr.warning(response.message);
           this._WishlistService.wishNumber.next(response.data.length);
           this.wishlistData = response.data;
         },

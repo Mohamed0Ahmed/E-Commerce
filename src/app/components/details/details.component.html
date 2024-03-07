@@ -12,15 +12,42 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div>
+      <div class="text-center">
         <h3 class="h5 fw-bold">{{ productDetails.title }}</h3>
         <p class="text-muted">{{ productDetails.description }}</p>
+        <p class="text-muted fw-bold">
+          Product sold :
+          <span class="fw-bold text-black">
+            {{ productDetails.sold }} times</span
+          >
+        </p>
+        <p class="text-muted fw-bold">
+          The rest of the product :
+          <span class="fw-bold text-black"> {{ productDetails.quantity }}</span>
+        </p>
+        <p class="text-muted fw-bold">
+          People Who Rating :
+          <span class="fw-bold text-black">
+            {{ productDetails.ratingsQuantity }}</span
+          >
+        </p>
 
         <ul class="d-flex justify-content-between align-items-center p-0 py-4">
-          <li>{{ productDetails.price }} EGP</li>
+          <li class="text-main fw-bold">{{ productDetails.price }} EGP</li>
           <li>
-            <span> <i class="fas fa-star rating-color"></i></span>
-            {{ productDetails.ratingsAverage }}
+            <span>
+              <ng-container
+                *ngFor="
+                  let _ of generateRatingArray(productDetails.ratingsAverage)
+                "
+              >
+                <i
+                  class="fa-solid fa-star repeat_here"
+                  style="color: #ffd43b"
+                ></i>
+              </ng-container>
+              <span class=""> {{ productDetails.ratingsAverage }} </span>
+            </span>
           </li>
         </ul>
         <div class="d-flex justify-content-between">

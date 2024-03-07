@@ -43,7 +43,7 @@
               [alt]="product.title"
             />
             <img
-              [src]="product.images[1]"
+              [src]="product.images[1] || product.images[0]"
               class="w-100 img2"
               [alt]="product.title"
             />
@@ -71,7 +71,7 @@
           <p class="fw-bold">RATING :</p>
           <span>
             <ng-container
-              *ngFor="let _ of generateRatingArray(product.ratingsAverage)"
+              *ngFor="let star of generateRatingArray(product.ratingsAverage)"
             >
               <i
                 class="fa-solid fa-star repeat_here"

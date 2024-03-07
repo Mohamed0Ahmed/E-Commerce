@@ -8,6 +8,21 @@
   font-weight: 800;
   font-size: 16px;
 }
-nav{
-  transition: .5s;
+nav {
+  transition: 0.5s;
+}
+
+@media (max-width: 992px) {
+  .nav {
+    background-color: var(--light-color) !important;
+  }
+  .iconsss li {
+    padding: 10px;
+  }
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-toggler {
+  border: none;
 }

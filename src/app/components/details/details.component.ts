@@ -92,4 +92,8 @@ export class DetailsComponent implements OnInit {
       });
     }
   }
+  //* show Stars
+  generateRatingArray(ratingAverage: number): any[] {
+    return Array.from({ length: ratingAverage }, (star, index) => index);
+  }
 }
