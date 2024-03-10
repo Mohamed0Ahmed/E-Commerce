@@ -97,3 +97,17 @@
 .dropdown-item:hover {
   color: black !important;
 }
+@media (max-width: 992px) {
+  .search {
+    position: relative;
+    top: 50%;
+    right: 0;
+    width: 350px;
+  }
+  .se {
+    display: none;
+  }
+  .lay {
+    display: none !important;
+  }
+}

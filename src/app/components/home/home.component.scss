@@ -102,6 +102,9 @@
   .se {
     display: none;
   }
+  .lay{
+    display: none !important;
+  }
 }
 .dropdown-item{
   transition: .5s;

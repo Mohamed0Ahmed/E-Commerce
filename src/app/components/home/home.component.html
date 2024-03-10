@@ -59,7 +59,7 @@
         </ul>
       </div>
       <!-- *### layouts -->
-      <div class="d-flex justify-content-end align-items-end w-50">
+      <div class="d-flex justify-content-end align-items-end w-50 lay">
         <button
           class="btn fw-bold"
           [class.btn-secondary]="layout === 12"
@@ -101,7 +101,7 @@
         "
         [class.d-none]="layout != 4"
       >
-        <div class="product h-100 position-relative cursor-pointer">
+        <div class="product p-4 h-100 position-relative cursor-pointer">
           <div [routerLink]="['/details', product._id]">
             <p class="h5 text-main text-center">{{ product.category.name }}</p>
             <div class="position-relative">
@@ -317,7 +317,7 @@
                   {{ product.price }} <span class="">EGP</span>
                 </h3>
                 <p
-                  class="text-danger number"
+                  class="text-danger number fw-bold h4"
                   *ngIf="product.price <= 300 || product.price > 1000"
                 >
                   {{

@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   //* variables
   productData: product[] = [];
-  productNoSale: product[] = [];
+productNoSale: product[] = [];
   serchTerm: string = '';
   pageSize: number = 0; //* limit
   currentPage: number = 1; //* current
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   layout4: boolean = true;
   show: string = 'All Products';
   onSale: boolean = true;
-  layout: number = 2;
+  layout: number = 4;
   //* show Stars
   generateRatingArray(ratingAverage: number): any[] {
     return Array.from({ length: ratingAverage }, (star, index) => index);
