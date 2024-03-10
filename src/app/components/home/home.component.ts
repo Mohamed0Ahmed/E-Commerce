@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   layout4: boolean = true;
   show: string = 'All Products';
   onSale: boolean = true;
-  layout: number = 4;
+  layout: number = 2;
   //* show Stars
   generateRatingArray(ratingAverage: number): any[] {
     return Array.from({ length: ratingAverage }, (star, index) => index);

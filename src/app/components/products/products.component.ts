@@ -32,7 +32,7 @@ export class ProductsComponent {
   layout4: boolean = true;
   show: string = 'All Products';
   onSale: boolean = true;
-  layout: number = 4;
+  layout: number = 2;
   generateRatingArray(ratingAverage: number): any[] {
     return Array.from({ length: ratingAverage }, (_, index) => index);
   }
