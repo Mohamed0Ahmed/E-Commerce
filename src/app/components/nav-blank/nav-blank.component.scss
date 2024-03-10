@@ -1,7 +1,7 @@
 .badge {
   position: absolute;
   top: -5px;
-  right: 3px;
+  right: -10px;
 }
 .nav-item {
   color: black;
@@ -25,4 +25,35 @@ nav {
 }
 .navbar-toggler {
   border: none;
+}
+@keyframes shake {
+  0% {
+    transform: scale(1);
+    color: black;
+  }
+  20%{
+    transform: scale(1.2);
+    color: yellow;
+  }
+  40%
+  {
+    transform: scale(0.8);
+    color: aqua;
+  }
+  60% {
+    transform: scale(1.2);
+    color: black;
+  }
+  80%{
+    transform: scale(0.8);
+    color: deeppink;
+  }
+  100% {
+    transform: scale(1);
+    color: red;
+  }
+}
+
+.shaking-heart {
+  animation: shake 2s ease-in-out;
 }

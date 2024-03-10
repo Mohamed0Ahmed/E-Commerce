@@ -5,8 +5,10 @@ import {
   ElementRef,
   ViewChild,
 } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { EcomdataService } from 'src/app/shared/services/ecomdata.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
 
 @Component({
@@ -18,8 +20,7 @@ export class NavBlankComponent implements OnInit {
   constructor(
     private _AuthService: AuthService,
     private _CartService: CartService,
-    private _WishlistService: WishlistService,
-    private elementRef: ElementRef
+    private _WishlistService: WishlistService
   ) {}
 
   @ViewChild('collapsibleNav')
@@ -30,6 +31,10 @@ export class NavBlankComponent implements OnInit {
   navCartNum: number = 0;
   wishlistNum: number = 0;
   windowWidth: number = 0;
+  shake: boolean = false;
+  shakeCart: boolean = false;
+  wishlistUpdated: boolean = false;
+  carUpdate: boolean = false;
 
   logoutUser(): void {
     this._AuthService.logout();
@@ -46,6 +51,14 @@ export class NavBlankComponent implements OnInit {
     this._CartService.cartNubmer.subscribe({
       next: (num) => {
         this.navCartNum = num;
+        if (this.carUpdate) {
+          this.shakeCart = true;
+          setTimeout(() => {
+            this.shakeCart = false;
+          }, 3000);
+        } else {
+          this.carUpdate = true;
+        }
       },
     });
     this.windowWidth = window.innerWidth;
@@ -55,10 +68,18 @@ export class NavBlankComponent implements OnInit {
         this.navCartNum = response.numOfCartItems;
       },
     });
-    //*####
+    //*#### get wish list num
     this._WishlistService.wishNumber.subscribe({
       next: (num) => {
         this.wishlistNum = num;
+        if (this.wishlistUpdated) {
+          this.shake = true;
+          setTimeout(() => {
+            this.shake = false;
+          }, 3000);
+        } else {
+          this.wishlistUpdated = true;
+        }
       },
     });
     this._WishlistService.getWishlist().subscribe({

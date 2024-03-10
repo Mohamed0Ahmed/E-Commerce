@@ -59,23 +59,26 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mt-2 mt-lg-0 align-items-center iconsss">
-        <li class="position-relative px-4" (click)="closeToggler()">
+        <li class="position-relative px-2" (click)="closeToggler()">
           <i
             class="fa-solid fa-heart fa-xl"
             routerLink="/wishlist"
             style="color: #d60707"
+            [class.shaking-heart]="shake == true"
           ></i>
           <span class="badge bg-main"> {{ wishlistNum }} </span>
         </li>
-        <li class="px-4 position-relative" (click)="closeToggler()">
+
+        <li class="px-2 position-relative" (click)="closeToggler()">
           <i
             class="fa-solid fa-cart-shopping fa-xl"
             style="color: #7c7e83"
             routerLink="/cart"
+            [class.shaking-heart]="shakeCart == true"
           ></i>
           <span class="badge bg-main"> {{ navCartNum }} </span>
         </li>
-        <li class="nav-item font-sm" (click)="closeToggler()" role="button">
+        <li class="nav-item font-sm px-4" (click)="closeToggler()" role="button">
           <span (click)="logoutUser()">Log out</span>
         </li>
       </ul>
