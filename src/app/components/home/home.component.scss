@@ -103,3 +103,10 @@
     display: none;
   }
 }
+.dropdown-item{
+  transition: .5s;
+  cursor: pointer;
+}
+.dropdown-item:hover{
+  color: black !important;
+}

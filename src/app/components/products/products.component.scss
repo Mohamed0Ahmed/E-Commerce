@@ -48,3 +48,52 @@
 .product:hover .img1 {
   opacity: 0;
 }
+.search {
+  position: absolute;
+  top: 50%;
+  right: 55%;
+  width: 450px;
+}
+.se {
+  object-fit: cover;
+  object-position: center;
+  height: 300px;
+  vertical-align: middle;
+  overflow: clip;
+  width: 100%;
+}
+.input {
+  padding: 10px;
+  padding-left: 60px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(50, 50, 50, 0.7);
+  background-color: transparent;
+  border: solid 2px black;
+  border-radius: 50px;
+}
+.form-control:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: #8b9098;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(132, 139, 149, 0.25);
+}
+.ic {
+  position: absolute;
+  top: 33px;
+  left: 15px;
+  font-weight: 700;
+  font-size: 30px;
+}
+.input::placeholder {
+  font-size: 20px;
+  font-weight: 700;
+}
+.dropdown-item {
+  transition: 0.5s;
+  cursor: pointer;
+}
+.dropdown-item:hover {
+  color: black !important;
+}

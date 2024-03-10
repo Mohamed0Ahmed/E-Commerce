@@ -23,9 +23,16 @@ export class ProductsComponent {
 
   //* variables
   productData: product[] = [];
+  productNoSale: product[] = [];
   categoryData: Categories[] = [];
   serchTerm: string = '';
   wishlistData: string[] = [];
+  layout2: boolean = false;
+  layout12: boolean = false;
+  layout4: boolean = true;
+  show: string = 'All Products';
+  onSale: boolean = true;
+  layout: number = 4;
   generateRatingArray(ratingAverage: number): any[] {
     return Array.from({ length: ratingAverage }, (_, index) => index);
   }
@@ -62,6 +69,7 @@ export class ProductsComponent {
       next: (response) => {
         this.productData = response.data;
         console.log(this.productData);
+        this.productNoSale = this.productData;
       },
     });
     //* ### get categories
@@ -121,5 +129,27 @@ export class ProductsComponent {
         },
       });
     }
+  }
+  //*#### layouts
+  showGrid2(): void {
+    this.layout = 2;
+  }
+  showGrid12(): void {
+    this.layout = 12;
+  }
+  showGrid4(): void {
+    this.layout = 4;
+  }
+
+  //* ### product or on sale
+  showAll(): void {
+    this.show = 'All Products';
+    this.productData = this.productNoSale;
+  }
+  showOnSale(): void {
+    this.show = 'On Sale';
+    this.productData = this.productData.filter(
+      (product) => product.price <= 300 || product.price > 1000
+    );
   }
 }

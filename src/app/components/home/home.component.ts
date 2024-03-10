@@ -20,11 +20,18 @@ export class HomeComponent implements OnInit {
 
   //* variables
   productData: product[] = [];
+  productNoSale: product[] = [];
   serchTerm: string = '';
   pageSize: number = 0; //* limit
   currentPage: number = 1; //* current
   total: number = 0;
   wishlistData: string[] = [];
+  layout2: boolean = false;
+  layout12: boolean = false;
+  layout4: boolean = true;
+  show: string = 'All Products';
+  onSale: boolean = true;
+  layout: number = 4;
   //* show Stars
   generateRatingArray(ratingAverage: number): any[] {
     return Array.from({ length: ratingAverage }, (star, index) => index);
@@ -39,6 +46,7 @@ export class HomeComponent implements OnInit {
         this.pageSize = response.metadata.limit;
         this.currentPage = response.metadata.currentPage;
         this.total = response.results;
+        this.productNoSale = this.productData;
       },
     });
     //* get wish list
@@ -101,5 +109,28 @@ export class HomeComponent implements OnInit {
         this.total = response.results;
       },
     });
+  }
+
+  //*#### layouts
+  showGrid2(): void {
+    this.layout = 2;
+  }
+  showGrid12(): void {
+    this.layout = 12;
+  }
+  showGrid4(): void {
+    this.layout = 4;
+  }
+
+  //* ### product or on sale
+  showAll(): void {
+    this.show = 'All Products';
+    this.productData = this.productNoSale;
+  }
+  showOnSale(): void {
+    this.show = 'On Sale';
+    this.productData = this.productData.filter(
+      (product) => product.price <= 300 || product.price > 1000
+    );
   }
 }
