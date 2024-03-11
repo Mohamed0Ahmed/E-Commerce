@@ -52,6 +52,10 @@ export class CartComponent implements OnInit {
       },
     });
   }
+  //* show Stars
+  generateRatingArray(ratingAverage: number): any[] {
+    return Array.from({ length: ratingAverage }, (star, index) => index);
+  }
 
   //* update count of amount of product
   updateCount(id: string, count: number): void {

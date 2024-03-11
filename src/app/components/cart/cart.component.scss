@@ -1,15 +1,22 @@
 @media (max-width: 992px) {
-  .contain{
-    display: block !important;
-  }
-  .first{
+  .first {
     flex-direction: column;
   }
-  .second{
+  .second {
     flex-direction: column;
     align-items: center;
   }
-  .main{
-    width: 100% !important;
+  .contain {
+    display: none !important;
   }
+  .tab {
+    display: none !important;
+  }
+  .small{
+    display: block !important;
+  }
+}
+
+.svg {
+  width: 700px;
 }

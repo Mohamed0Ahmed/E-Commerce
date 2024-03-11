@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   //* variables
   productData: product[] = [];
-productNoSale: product[] = [];
+  productNoSale: product[] = [];
   serchTerm: string = '';
   pageSize: number = 0; //* limit
   currentPage: number = 1; //* current

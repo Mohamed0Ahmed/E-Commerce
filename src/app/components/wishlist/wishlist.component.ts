@@ -48,6 +48,10 @@ export class WishlistComponent implements OnInit {
       },
     });
   }
+  //* show Stars
+  generateRatingArray(ratingAverage: number): any[] {
+    return Array.from({ length: ratingAverage }, (star, index) => index);
+  }
 
   //* ### add to cart
   addCart(id: String): void {
