@@ -5,10 +5,8 @@ import {
   ElementRef,
   ViewChild,
 } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
-import { EcomdataService } from 'src/app/shared/services/ecomdata.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
 
 @Component({
@@ -35,6 +33,7 @@ export class NavBlankComponent implements OnInit {
   shakeCart: boolean = false;
   wishlistUpdated: boolean = false;
   carUpdate: boolean = false;
+  photo: string = './assets/images/OIP.jpeg';
 
   logoutUser(): void {
     this._AuthService.logout();
@@ -48,6 +47,13 @@ export class NavBlankComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //* get user pic
+    if (localStorage.getItem('photo')) {
+      this.photo = localStorage.getItem('photo')!;
+    } else {
+      this.photo = './assets/images/OIP.jpeg';
+    }
+
     this._CartService.cartNubmer.subscribe({
       next: (num) => {
         this.navCartNum = num;
@@ -96,6 +102,11 @@ export class NavBlankComponent implements OnInit {
       this.scrolled = true;
     } else {
       this.scrolled = false;
+      if (localStorage.getItem('photo')) {
+        this.photo = localStorage.getItem('photo')!;
+      } else {
+        this.photo = './assets/images/OIP.jpeg';
+      }
     }
   }
 }

@@ -58,7 +58,9 @@
           >
         </li>
       </ul>
-      <ul class="navbar-nav ms-auto mt-2 mt-lg-0 align-items-center iconsss">
+      <ul
+        class="navbar-nav ms-auto mt-2 mt-lg-0 text-center align-items-center iconsss"
+      >
         <li class="position-relative px-2" (click)="closeToggler()">
           <i
             class="fa-solid fa-heart fa-xl"
@@ -78,8 +80,29 @@
           ></i>
           <span class="badge bg-main"> {{ navCartNum }} </span>
         </li>
-        <li class="nav-item font-sm px-4" (click)="closeToggler()" role="button">
-          <span (click)="logoutUser()">Log out</span>
+
+        <li class="nav-item dropdown ms-3 drop">
+          <span
+            class="nav-link"
+            data-bs-toggle="dropdown"
+            role="button"
+            aria-expanded="false"
+          >
+            <span>
+              <img [src]="photo" class="photo" />
+            </span>
+          </span>
+          <ul class="dropdown-menu">
+            <li routerLink="/profile">
+              <span (click)="closeToggler()">Profile</span>
+            </li>
+            <li (click)="closeToggler()">
+              <span>Setting</span>
+            </li>
+            <li (click)="logoutUser()" (click)="closeToggler()">
+              <span>Log out</span>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

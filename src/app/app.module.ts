@@ -31,6 +31,7 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { ForgetPassComponent } from './components/forget-pass/forget-pass.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MainSliderComponent } from './components/main-slider/main-slider.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MainSliderComponent } from './components/main-slider/main-slider.compon
     AllOrdersComponent,
     ForgetPassComponent,
     MainSliderComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AllOrdersComponent } from './components/all-orders/all-orders.component';
 import { ForgetPassComponent } from './components/forget-pass/forget-pass.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   //*########### user show
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: 'product', component: ProductsComponent, title: 'Products' },
       { path: 'category', component: CategoriesComponent, title: 'Category' },
       { path: 'brands', component: BrandsComponent, title: 'Brands' },
+      { path: 'profile', component: ProfileComponent, title: 'Profile' },
       { path: 'details/:id', component: DetailsComponent, title: 'Details' },
     ],
   },

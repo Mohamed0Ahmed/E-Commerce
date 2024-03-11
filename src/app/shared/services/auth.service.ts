@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private _HttpClient: HttpClient ,private _Router:Router) {}
-  Dataaa:any
+  constructor(private _HttpClient: HttpClient, private _Router: Router) {}
+  Dataaa: any;
   //* to decode token
   saveUserData() {
     if (localStorage.getItem('eToken')) {
@@ -16,7 +16,6 @@ export class AuthService {
       let decodeToken = jwtDecode(encodeToken);
       this.Dataaa = decodeToken;
       console.log(this.Dataaa);
-      
     }
   }
 
@@ -36,9 +35,9 @@ export class AuthService {
     );
   }
 
-  //* logout 
-  logout():void{
+  //* logout
+  logout(): void {
     localStorage.removeItem('eToken');
-    this._Router.navigate(["/login"]) ;
+    this._Router.navigate(['/login']);
   }
 }
