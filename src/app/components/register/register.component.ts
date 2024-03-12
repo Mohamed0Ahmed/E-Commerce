@@ -67,6 +67,7 @@ export class RegisterComponent {
         next: (response) => {
           this._Router.navigate(['/login']);
           this.isValid = false;
+          
         },
 
         error: (err) => {

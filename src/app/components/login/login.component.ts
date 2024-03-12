@@ -29,7 +29,7 @@ export class LoginComponent {
 
   handleForm(): void {
     //* ### object to backend
-    this.errorMessage='';
+    this.errorMessage = '';
     const userData = this.loginForm.value;
     this.isValid = true;
     if (this.loginForm.valid) {
@@ -37,8 +37,11 @@ export class LoginComponent {
         next: (response) => {
           localStorage.setItem('eToken', response.token);
           this._AuthService.saveUserData();
+          localStorage.setItem('mail', userData.email);
+          localStorage.setItem('pass', userData.password);
           this._Router.navigate(['/home']);
           this.isValid = false;
+          console.log(userData);
         },
 
         error: (err: HttpErrorResponse) => {
@@ -50,7 +53,7 @@ export class LoginComponent {
       });
     } else {
       this.loginForm.markAllAsTouched();
-      this.isValid =false ;
+      this.isValid = false;
     }
   }
 }

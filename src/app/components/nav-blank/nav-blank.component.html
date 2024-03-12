@@ -30,7 +30,7 @@
             class="nav-link"
             routerLinkActive="active-link"
             routerLink="/product"
-            >product</a
+            >Product</a
           >
         </li>
         <li class="nav-item font-sm" (click)="closeToggler()">
@@ -38,7 +38,7 @@
             class="nav-link"
             routerLinkActive="active-link"
             routerLink="/category"
-            >category</a
+            >Category</a
           >
         </li>
         <li class="nav-item font-sm" (click)="closeToggler()">
@@ -46,7 +46,7 @@
             class="nav-link"
             routerLinkActive="active-link"
             routerLink="/brands"
-            >brands</a
+            >Brands</a
           >
         </li>
         <li class="nav-item font-sm" (click)="closeToggler()">
@@ -96,7 +96,7 @@
             <li routerLink="/profile">
               <span (click)="closeToggler()">Profile</span>
             </li>
-            <li (click)="closeToggler()">
+            <li (click)="closeToggler()" routerLink="/setting">
               <span>Setting</span>
             </li>
             <li (click)="logoutUser()" (click)="closeToggler()">

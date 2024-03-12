@@ -1,3 +1,4 @@
+import { SettingComponent } from './components/setting/setting.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: 'product', component: ProductsComponent, title: 'Products' },
       { path: 'category', component: CategoriesComponent, title: 'Category' },
       { path: 'brands', component: BrandsComponent, title: 'Brands' },
+      { path: 'setting', component: SettingComponent, title: 'Setting' },
       { path: 'profile', component: ProfileComponent, title: 'Profile' },
       { path: 'details/:id', component: DetailsComponent, title: 'Details' },
     ],

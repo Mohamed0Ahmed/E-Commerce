@@ -5,6 +5,7 @@ import {
   ElementRef,
   ViewChild,
 } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { WishlistService } from 'src/app/shared/services/wishlist.service';
@@ -34,6 +35,7 @@ export class NavBlankComponent implements OnInit {
   wishlistUpdated: boolean = false;
   carUpdate: boolean = false;
   photo: string = './assets/images/OIP.jpeg';
+  Dataaa: any;
 
   logoutUser(): void {
     this._AuthService.logout();
@@ -47,9 +49,15 @@ export class NavBlankComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //* get id
+    if (localStorage.getItem('eToken')) {
+      let encodeToken: any = localStorage.getItem('eToken');
+      let decodeToken = jwtDecode(encodeToken);
+      this.Dataaa = decodeToken;
+    }
     //* get user pic
-    if (localStorage.getItem('photo')) {
-      this.photo = localStorage.getItem('photo')!;
+    if (localStorage.getItem(this.Dataaa.id)) {
+      this.photo = localStorage.getItem(this.Dataaa.id)!;
     } else {
       this.photo = './assets/images/OIP.jpeg';
     }
@@ -90,7 +98,6 @@ export class NavBlankComponent implements OnInit {
     });
     this._WishlistService.getWishlist().subscribe({
       next: (response) => {
-        console.log(response);
         this.wishlistNum = response.count;
       },
     });
@@ -102,8 +109,8 @@ export class NavBlankComponent implements OnInit {
       this.scrolled = true;
     } else {
       this.scrolled = false;
-      if (localStorage.getItem('photo')) {
-        this.photo = localStorage.getItem('photo')!;
+      if (localStorage.getItem(this.Dataaa.id)) {
+        this.photo = localStorage.getItem(this.Dataaa.id)!;
       } else {
         this.photo = './assets/images/OIP.jpeg';
       }

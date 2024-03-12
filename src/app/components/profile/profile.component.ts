@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -20,13 +21,28 @@ export class ProfileComponent implements OnInit {
   photo: string = './assets/images/OIP.jpeg';
   selectedFile: File | null = null;
   message: string = '';
+  Dataaa: any;
+  userName: string = '';
+  userEmail: any;
 
   //*
 
   ngOnInit(): void {
+    //* get id
+    if (localStorage.getItem('eToken')) {
+      let encodeToken: any = localStorage.getItem('eToken');
+      let decodeToken = jwtDecode(encodeToken);
+      this.Dataaa = decodeToken;
+      this.userName = this.Dataaa.name;
+      this.userEmail = localStorage.getItem('mail');
+
+      console.log(this.Dataaa.id);
+    }
+
     //* ### get pic
-    if (localStorage.getItem('photo')) {
-      this.photo = localStorage.getItem('photo')!;
+
+    if (localStorage.getItem(this.Dataaa.id)) {
+      this.photo = localStorage.getItem(this.Dataaa.id)!;
     } else {
       this.photo = './assets/images/OIP.jpeg';
     }
@@ -54,7 +70,7 @@ export class ProfileComponent implements OnInit {
 
         reader.onload = (event: any) => {
           this.photo = event.target.result;
-          localStorage.setItem('photo', this.photo);
+          localStorage.setItem(this.Dataaa.id, this.photo);
         };
 
         reader.readAsDataURL(this.selectedFile!);
@@ -67,7 +83,7 @@ export class ProfileComponent implements OnInit {
   }
   //* #### Remove photo
   remove(): void {
-    localStorage.removeItem('photo');
+    localStorage.removeItem(this.Dataaa.id);
     this.photo = './assets/images/OIP.jpeg';
   }
 }

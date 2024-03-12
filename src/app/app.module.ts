@@ -32,6 +32,7 @@ import { ForgetPassComponent } from './components/forget-pass/forget-pass.compon
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MainSliderComponent } from './components/main-slider/main-slider.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SettingComponent } from './components/setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ForgetPassComponent,
     MainSliderComponent,
     ProfileComponent,
+    SettingComponent,
   ],
   imports: [
     BrowserModule,
