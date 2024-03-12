@@ -46,13 +46,17 @@ export class CartService {
   }
   //* check out
   checkOut(id: string, userData: object): Observable<any> {
+    const encodedUrl = encodeURIComponent(
+      'https://mohamed0ahmed.github.io/E-Commerce/#'
+    );
     return this._HttpClient.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://mohamed0ahmed.github.io/E-Commerce/#`,
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=${encodedUrl}`,
       {
         shippingAddress: userData,
       }
     );
   }
+
   //* get user orders
   getUserOrders(id: string): Observable<any> {
     return this._HttpClient.get(
