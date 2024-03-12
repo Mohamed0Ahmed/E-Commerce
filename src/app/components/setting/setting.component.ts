@@ -1,3 +1,4 @@
+import { User } from './../../shared/interfaces/user-orders';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import {
   FormGroup,
@@ -49,6 +50,7 @@ export class SettingComponent {
   addMsg: string = '';
   passMsg: string = '';
   passMsgd: string = '';
+  updatInfo: string = '';
 
   //*
 
@@ -100,13 +102,17 @@ export class SettingComponent {
   updateInfo(): void {
     const userData = this.registerForm.value;
     this.errMsg = '';
+    this.updatInfo = '';
     //*
     this._UserService.updateUserData(userData).subscribe({
       next: (response) => {
-        this.userName = this.registerForm.value.name;
-        this.userEmail = this.registerForm.value.email;
+        this.userName = response.user.name;
+        this.userEmail = response.user.email;
         this.userPhone = this.registerForm.value.phone;
         localStorage.setItem(`${this.userId} phone `, this.userPhone);
+        this.updatInfo = 'Update Info Successfull';
+        console.log(response);
+        
       },
       error: (err) => {
         this.errMsg = err.error.errors.msg;

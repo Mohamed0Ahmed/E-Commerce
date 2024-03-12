@@ -127,6 +127,9 @@
           <div class="text-center" *ngIf="errMsg">
             <p class="text-danger fw-bold">{{ errMsg }}</p>
           </div>
+          <div class="text-center" *ngIf="updatInfo">
+            <p class="text-success fw-bold">{{ updatInfo }}</p>
+          </div>
           <button
             class="btn btn-success"
             type="submit"
